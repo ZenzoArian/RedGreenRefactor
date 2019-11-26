@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.IOException;
+
 public class Duplicator {
 
     public static void main(String[] arg) {
@@ -26,9 +29,42 @@ public class Duplicator {
      * 4. Maak de functie duplicateCounter() af zodat de test wel werkt.
      *
      */
+
+    public static String path = "D:\\school\\ma\\bewijzenmap\\periode.2.1\\SEC\\L-5\\test.txt";
+
     public int duplicateCounter(int number) {
         return number * 2;
     }
 
+    public void createFile() {
+        try {
+            File output = new File(path);
+            boolean isFileCreated = output.createNewFile();
+            if (isFileCreated){
+                System.out.println("File successfully created!");
+            }
+            else{
+                System.out.println("File already exist!");
+            }
+        } catch (IOException e) {
+            System.out.println("Exception Occurred:");
+            e.printStackTrace();
+        }
+    }
 
+
+    public void deleteFile() {
+        try{
+            File output = new File(path);
+
+            if(output.delete()){
+                System.out.println(output.getName() + " is deleted!");
+            }else{
+                System.out.println("Delete failed");
+            }
+        }catch(Exception e){
+            System.out.println("Exception occurred");
+            e.printStackTrace();
+        }
+    }
 }
